@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import iconUrl from '@/assets/icon/icon.png'
+import ServerStatus from '@/components/ServerStatus.vue'
 
 const serverIp = 'mc.strawserver.com'
 const copied = ref(false)
@@ -54,6 +55,10 @@ const features = [
         <a class="link-btn" href="https://www.strawserver.com/" target="_blank" rel="noopener">
           前往官網
         </a>
+      </div>
+
+      <div class="hero__status">
+        <ServerStatus :host="serverIp" />
       </div>
     </section>
 
@@ -256,6 +261,12 @@ const features = [
 
 .link-btn--primary:hover {
   background: linear-gradient(135deg, #6772f4, #5865f2);
+}
+
+.hero__status {
+  width: 100%;
+  max-width: 520px;
+  margin-top: 32px;
 }
 
 .intro,
