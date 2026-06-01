@@ -52,9 +52,15 @@ const features = [
         <a class="link-btn link-btn--primary" href="https://dc.strawserver.com/" target="_blank" rel="noopener">
           加入 Discord
         </a>
-        <a class="link-btn" href="https://www.strawserver.com/" target="_blank" rel="noopener">
-          前往官網
-        </a>
+        <RouterLink class="link-btn" to="/rules">
+          伺服器規定
+        </RouterLink>
+        <RouterLink class="link-btn" to="/membership">
+          會員等級
+        </RouterLink>
+        <RouterLink class="link-btn" to="/about">
+          關於我們
+        </RouterLink>
       </div>
 
       <div class="hero__status">
