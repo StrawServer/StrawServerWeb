@@ -1,11 +1,90 @@
 <script setup>
 const levels = [
-  { level: 1, title: '小稻草', price: '50 ~ 100' },
-  { level: 2, title: '稻田旅人', price: '100 ~ 300' },
-  { level: 3, title: '稻穗收藏家', price: '300 ~ 500' },
-  { level: 4, title: '豐收守護者', price: '500 ~ 1000' },
-  { level: 5, title: '稻田之星', price: '1000 ~ 3000' },
-  { level: 6, title: '符合規則可自訂義', price: '> 3000' },
+  {
+    level: 1,
+    title: '小稻草',
+    price: '50 ~ 100',
+    titleDays: '365 天',
+    claims: '3 個',
+    homes: '3 個',
+    flightDays: '7 天',
+    dailyRewardDays: '30 天',
+    dailyReward: '100 金幣',
+    coins: '2,000 金幣',
+  },
+  {
+    level: 2,
+    title: '稻田旅人',
+    price: '100 ~ 300',
+    titleDays: '365 天',
+    claims: '5 個',
+    homes: '5 個',
+    flightDays: '30 天',
+    dailyRewardDays: '30 天',
+    dailyReward: '200 金幣',
+    coins: '6,000 金幣',
+  },
+  {
+    level: 3,
+    title: '稻穗收藏家',
+    price: '300 ~ 500',
+    titleDays: '365 天',
+    claims: '8 個',
+    homes: '8 個',
+    flightDays: '60 天',
+    dailyRewardDays: '30 天',
+    dailyReward: '350 金幣',
+    coins: '12,000 金幣',
+  },
+  {
+    level: 4,
+    title: '豐收守護者',
+    price: '500 ~ 1000',
+    titleDays: '365 天',
+    claims: '12 個',
+    homes: '12 個',
+    flightDays: '120 天',
+    dailyRewardDays: '30 天',
+    dailyReward: '600 金幣',
+    coins: '25,000 金幣',
+  },
+  {
+    level: 5,
+    title: '稻田之星',
+    price: '1000 ~ 3000',
+    titleDays: '365 天',
+    claims: '20 個',
+    homes: '20 個',
+    flightDays: '360 天',
+    dailyRewardDays: '30 天',
+    dailyReward: '1,000 金幣',
+    coins: '60,000 金幣',
+  },
+  {
+    level: 6,
+    title: '自訂稱號',
+    price: '3000 以上',
+    titleDays: '365 天',
+    claims: '30 個',
+    homes: '30 個',
+    flightDays: '永久',
+    dailyRewardDays: '30 天',
+    dailyReward: '1,500 金幣',
+    coins: '100,000 金幣',
+  },
+]
+
+const tableColumns = [
+  { key: 'level', label: '等級' },
+  { key: 'title', label: '稱號' },
+  { key: 'titleDays', label: '稱號天數' },
+  { key: 'price', label: '金額範圍' },
+  { key: 'claims', label: '領地數' },
+  { key: 'homes', label: '家數' },
+  { key: 'flightDays', label: '飛行天數' },
+  { key: 'dailyRewardDays', label: '簽到獎勵天數' },
+  { key: 'dailyReward', label: '每日簽到獎勵' },
+  { key: 'coins', label: '獲取金幣數' },
 ]
 </script>
 
@@ -19,35 +98,65 @@ const levels = [
     </nav>
 
     <section class="page-hero">
-      <p class="eyebrow">Member Levels</p>
-      <h1>會員等級</h1>
+      <p class="eyebrow">Sponsor Member Levels</p>
+      <h1>稻草伺服器 贊助會員階級</h1>
       <p>
-        支持稻草伺服器的玩家會依照支持區間獲得對應稱號。第 6 級可在符合伺服器規則與管理規範下申請自訂義稱號。
+        支持稻草伺服器的玩家會依照贊助金額範圍獲得對應稱號與福利，稱號為期 365 天，每日簽到獎勵為期 30 天，並包含領地數、家數、飛行天數與金幣獎勵。
       </p>
     </section>
 
-    <section class="level-grid" aria-label="會員等級卡片">
+    <section class="level-grid" aria-label="贊助會員階級卡片">
       <article v-for="item in levels" :key="item.level" class="level-card">
-        <span class="level-card__badge">Lv. {{ item.level }}</span>
+        <div class="level-card__topline">
+          <span class="level-card__badge">Lv. {{ item.level }}</span>
+          <span class="level-card__price">{{ item.price }}</span>
+        </div>
         <h2>{{ item.title }}</h2>
-        <p class="level-card__price">{{ item.price }}</p>
+        <dl class="level-card__perks">
+          <div>
+            <dt>稱號天數</dt>
+            <dd>{{ item.titleDays }}</dd>
+          </div>
+          <div>
+            <dt>領地數</dt>
+            <dd>{{ item.claims }}</dd>
+          </div>
+          <div>
+            <dt>家數</dt>
+            <dd>{{ item.homes }}</dd>
+          </div>
+          <div>
+            <dt>飛行</dt>
+            <dd>{{ item.flightDays }}</dd>
+          </div>
+          <div>
+            <dt>簽到天數</dt>
+            <dd>{{ item.dailyRewardDays }}</dd>
+          </div>
+          <div>
+            <dt>簽到獎勵</dt>
+            <dd>{{ item.dailyReward }}</dd>
+          </div>
+          <div class="level-card__coins">
+            <dt>獲取金幣</dt>
+            <dd>{{ item.coins }}</dd>
+          </div>
+        </dl>
       </article>
     </section>
 
-    <section class="table-card" aria-label="會員等級表格">
+    <section class="table-card" aria-label="贊助會員階級表格">
       <table>
         <thead>
           <tr>
-            <th>等級</th>
-            <th>稱號</th>
-            <th>價格</th>
+            <th v-for="column in tableColumns" :key="column.key">{{ column.label }}</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="item in levels" :key="`row-${item.level}`">
-            <td>{{ item.level }}</td>
-            <td>{{ item.title }}</td>
-            <td>{{ item.price }}</td>
+            <td v-for="column in tableColumns" :key="column.key">
+              {{ item[column.key] }}
+            </td>
           </tr>
         </tbody>
       </table>
@@ -63,7 +172,7 @@ const levels = [
 }
 
 .site-nav {
-  max-width: 1080px;
+  max-width: 1180px;
   margin: 0 auto 40px;
   display: flex;
   flex-wrap: wrap;
@@ -91,7 +200,7 @@ const levels = [
 .level-grid,
 .table-card {
   width: 100%;
-  max-width: 1080px;
+  max-width: 1180px;
   margin-inline: auto;
 }
 
@@ -113,13 +222,13 @@ const levels = [
 }
 
 .page-hero h1 {
-  font-size: clamp(36px, 6vw, 58px);
+  font-size: clamp(34px, 6vw, 58px);
   color: #fff7df;
   margin-bottom: 18px;
 }
 
 .page-hero p:not(.eyebrow) {
-  max-width: 720px;
+  max-width: 760px;
   margin: 0 auto;
   color: #b7bdcc;
   line-height: 1.9;
@@ -127,7 +236,7 @@ const levels = [
 
 .level-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
   gap: 18px;
   margin-top: 30px;
 }
@@ -135,7 +244,7 @@ const levels = [
 .level-card {
   position: relative;
   overflow: hidden;
-  min-height: 170px;
+  min-height: 280px;
   padding: 24px;
   border-radius: 24px;
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.035));
@@ -152,6 +261,13 @@ const levels = [
   height: 140px;
   border-radius: 50%;
   background: rgba(255, 209, 102, 0.12);
+}
+
+.level-card__topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 }
 
 .level-card__badge {
@@ -171,10 +287,44 @@ const levels = [
 }
 
 .level-card__price {
-  margin-top: 8px;
   color: #ffd166;
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.level-card__perks {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.level-card__perks div {
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.level-card__perks dt {
+  color: #8f96a8;
+  font-size: 12px;
   font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.level-card__perks dd {
+  margin-top: 5px;
+  color: #e7ebf4;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.level-card__perks .level-card__coins {
+  grid-column: 1 / -1;
 }
 
 .table-card {
@@ -189,7 +339,7 @@ const levels = [
 table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 520px;
+  min-width: 1120px;
 }
 
 th,
@@ -201,13 +351,15 @@ td {
 
 th {
   color: #ffd166;
-  font-size: 14px;
-  letter-spacing: 0.08em;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
 }
 
 td {
   color: #c9cedb;
   font-weight: 650;
+  white-space: nowrap;
 }
 
 tr:last-child td {
@@ -221,6 +373,10 @@ tr:last-child td {
 
   .page-hero {
     padding: 34px 18px;
+  }
+
+  .level-card__perks {
+    grid-template-columns: 1fr;
   }
 }
 </style>
