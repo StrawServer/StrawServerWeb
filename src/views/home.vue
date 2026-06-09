@@ -63,11 +63,11 @@ const infoItems = [
   <main class="home">
     <section class="hero">
       <img :src="iconUrl" alt="StrawServer Logo" class="hero__logo" />
-      <p class="hero__eyebrow">稻草空島 StrawSkyBlock</p>
+      <p class="hero__eyebrow">稻草空島 StrawServer</p>
       <h1 class="hero__title">從一座小島開始你的世界</h1>
       <p class="hero__subtitle">只有一棵樹、一個箱子、一桶岩漿與一桶水，也能打造出屬於自己的天空王國。</p>
       <p class="hero__desc">
-        歡迎加入稻草空島 StrawSkyBlock！這裡不是普通生存，而是從一座空島開始，靠雙手慢慢擴建、發展經濟、升級島嶼，把一片天空變成屬於你的世界。
+        歡迎加入稻草空島 StrawServer！這裡不是普通生存，而是從一座空島開始，靠雙手慢慢擴建、發展經濟、升級島嶼，把一片天空變成屬於你的世界。
       </p>
 
       <div class="ip-card">
@@ -155,10 +155,13 @@ const infoItems = [
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 56px 24px 32px;
-  background: radial-gradient(circle at 20% 0%, rgba(255, 209, 102, 0.22), transparent 34%),
-    radial-gradient(circle at 82% 14%, rgba(93, 176, 255, 0.16), transparent 36%),
-    linear-gradient(180deg, #0d1724 0%, #0e131d 52%, #10151f 100%);
+  padding: 64px 24px 32px;
+  background: radial-gradient(
+      circle at top,
+      rgba(255, 196, 0, 0.14),
+      transparent 60%
+    ),
+    #0e131d;
 }
 
 .hero {
@@ -166,64 +169,52 @@ const infoItems = [
   flex-direction: column;
   align-items: center;
   text-align: center;
-  max-width: 860px;
+  max-width: 760px;
   width: 100%;
 }
 
 .hero__logo {
-  width: 132px;
-  height: 132px;
+  width: 140px;
+  height: 140px;
   object-fit: contain;
-  border-radius: 30px;
-  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.5);
-  margin-bottom: 28px;
-}
-
-.hero__eyebrow {
-  color: #ffd166;
-  font-weight: 900;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  margin-bottom: 12px;
+  border-radius: 28px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  margin-bottom: 32px;
 }
 
 .hero__title {
-  font-size: clamp(40px, 8vw, 72px);
-  font-weight: 900;
-  letter-spacing: 0.01em;
-  line-height: 1.12;
-  background: linear-gradient(135deg, #fff1b8, #ffd166 46%, #7bdcff);
+  font-size: clamp(40px, 8vw, 64px);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  background: linear-gradient(135deg, #ffd166, #ffae00);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .hero__subtitle {
-  margin-top: 18px;
-  font-size: clamp(18px, 3.2vw, 25px);
-  color: #e6e8ef;
-  line-height: 1.7;
-  max-width: 760px;
+  margin-top: 8px;
+  font-size: clamp(18px, 3.2vw, 24px);
+  color: #d6d8df;
 }
 
 .hero__desc {
-  margin-top: 18px;
-  font-size: clamp(15px, 2.4vw, 18px);
-  color: #aeb8c8;
-  line-height: 1.9;
-  max-width: 740px;
+  margin-top: 20px;
+  font-size: clamp(15px, 2.6vw, 18px);
+  color: #aab0bd;
+  line-height: 1.7;
+  max-width: 620px;
 }
 
 .ip-card {
-  margin-top: 38px;
+  margin-top: 40px;
   width: 100%;
-  max-width: 600px;
+  max-width: 520px;
   padding: 20px 22px;
-  background: rgba(255, 255, 255, 0.055);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 22px;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.34);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
 }
 
 .ip-card__row {
@@ -235,24 +226,24 @@ const infoItems = [
 
 .ip-card__label {
   font-size: 13px;
-  color: #a8b0c0;
+  color: #9aa0b0;
   letter-spacing: 0.08em;
 }
 
 .ip-card__value {
   flex: 1;
-  min-width: 210px;
+  min-width: 200px;
   text-align: left;
   font-family: 'JetBrains Mono', 'Fira Code', Menlo, monospace;
   font-size: 17px;
   color: #ffd166;
-  padding: 9px 13px;
+  padding: 8px 12px;
   background: rgba(0, 0, 0, 0.35);
-  border-radius: 12px;
+  border-radius: 10px;
 }
 
 .ip-card__copy {
-  padding: 9px 17px;
+  padding: 8px 16px;
   border-radius: 999px;
   border: 1px solid rgba(255, 209, 102, 0.5);
   background: rgba(255, 174, 0, 0.16);
@@ -273,9 +264,20 @@ const infoItems = [
 .ip-card__hint {
   margin-top: 12px;
   font-size: 13px;
-  color: #98a2b5;
+  color: #8e94a4;
   text-align: left;
-  line-height: 1.7;
+}
+
+.ip-card__hint kbd {
+  display: inline-block;
+  padding: 2px 8px;
+  margin: 0 2px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+  font-family: inherit;
+  font-size: 12px;
+  color: #e6e8ef;
 }
 
 .hero__links {
@@ -292,16 +294,15 @@ const infoItems = [
   padding: 12px 22px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.04);
   color: #f5f5f7;
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 600;
   transition: background 0.2s ease, transform 0.1s ease;
 }
 
 .link-btn:hover {
-  background: rgba(255, 255, 255, 0.11);
-  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .link-btn--primary {
@@ -316,106 +317,76 @@ const infoItems = [
 
 .hero__status {
   width: 100%;
-  max-width: 600px;
+  max-width: 520px;
   margin-top: 32px;
 }
 
 .intro,
 .features,
-.server-info,
 .cta {
   width: 100%;
-  max-width: 1080px;
+  max-width: 960px;
   margin-top: 72px;
 }
 
 .intro p {
-  color: #b7bfcd;
-  line-height: 1.9;
+  color: #b3b8c6;
+  line-height: 1.85;
   font-size: 16px;
   margin-top: 12px;
-  text-align: center;
 }
 
 .section-title {
-  font-size: clamp(24px, 4vw, 34px);
-  font-weight: 850;
-  color: #fff7df;
-  margin-bottom: 22px;
+  font-size: clamp(22px, 4vw, 28px);
+  font-weight: 700;
+  color: #f5f5f7;
+  margin-bottom: 20px;
   text-align: center;
 }
 
-.features__grid,
-.server-info__grid {
+.features__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 18px;
-}
-
-.feature-card,
-.info-card {
-  border-radius: 22px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.2);
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
 }
 
 .feature-card {
-  padding: 24px;
+  padding: 22px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .feature-card:hover {
-  transform: translateY(-3px);
-  background: rgba(255, 255, 255, 0.075);
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.07);
 }
 
 .feature-card__icon {
-  font-size: 32px;
-  margin-bottom: 12px;
+  font-size: 28px;
+  margin-bottom: 10px;
 }
 
 .feature-card__title {
-  font-size: 19px;
-  font-weight: 800;
+  font-size: 17px;
+  font-weight: 700;
   color: #ffd166;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .feature-card__desc {
   font-size: 14px;
-  line-height: 1.8;
-  color: #adb7c8;
-}
-
-.info-card {
-  padding: 22px;
-}
-
-.info-card span {
-  display: block;
-  color: #9da8ba;
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  margin-bottom: 10px;
-}
-
-.info-card strong {
-  color: #f5f5f7;
-  font-size: 18px;
-  line-height: 1.6;
+  line-height: 1.7;
+  color: #aab0bd;
 }
 
 .cta {
   text-align: center;
-  padding: 34px 24px;
-  border-radius: 28px;
-  background: linear-gradient(135deg, rgba(255, 209, 102, 0.13), rgba(123, 220, 255, 0.08));
-  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .cta p {
-  color: #c0c7d3;
+  color: #b3b8c6;
   line-height: 1.8;
   margin-top: 8px;
 }
@@ -424,7 +395,7 @@ const infoItems = [
   margin-top: 16px;
   font-size: 18px;
   color: #ffd166;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .footer {
@@ -432,34 +403,7 @@ const infoItems = [
   text-align: center;
   margin-top: 64px;
   padding-top: 24px;
-  color: #737a8c;
+  color: #6c7180;
   font-size: 13px;
-}
-
-@media (max-width: 640px) {
-  .home {
-    padding: 42px 16px 28px;
-  }
-
-  .hero__logo {
-    width: 108px;
-    height: 108px;
-  }
-
-  .ip-card__value {
-    min-width: 100%;
-    text-align: center;
-  }
-
-  .ip-card__copy {
-    width: 100%;
-  }
-
-  .intro,
-  .features,
-  .server-info,
-  .cta {
-    margin-top: 52px;
-  }
 }
 </style>
