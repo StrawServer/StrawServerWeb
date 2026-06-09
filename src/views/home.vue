@@ -4,6 +4,8 @@ import iconUrl from '@/assets/icon/icon.png'
 import ServerStatus from '@/components/ServerStatus.vue'
 
 const serverIp = 'mc.strawserver.com'
+const discordUrl = 'https://dc.strawserver.com/'
+const websiteUrl = 'https://www.strawserver.com/'
 const copied = ref(false)
 
 const copyIp = async () => {
@@ -17,13 +19,43 @@ const copyIp = async () => {
 }
 
 const features = [
-  { icon: '🌲', title: '多人休閒生存', desc: '適合朋友一起慢慢玩、一起發展基地。' },
-  { icon: '💰', title: '經濟系統', desc: '支援交易、商店與玩家之間的互動。' },
-  { icon: '🏗️', title: '建築玩法', desc: '歡迎喜歡蓋房子、主城、景觀與大型建築的玩家。' },
-  { icon: '⚙️', title: '紅石玩家友善', desc: '研究機關、自動農場與技術玩法都能發揮。' },
-  { icon: '🌍', title: '多分流系統', desc: '不同分流分工，遊玩更清楚、更穩定。' },
-  { icon: '⛏️', title: '資源分流', desc: '安心採集資源，不破壞主要世界。' },
-  { icon: '🎉', title: '伺服器活動', desc: '不定期舉辦活動，增加玩家互動與樂趣。' },
+  {
+    icon: '☁️',
+    title: '玩家專屬空島',
+    desc: '每位玩家都可以建立自己的空島，從草地、樹木、箱子、岩漿與水開始，慢慢擴張天空基地。',
+  },
+  {
+    icon: '⛏️',
+    title: '鵝卵石生礦系統',
+    desc: '岩漿與水生成鵝卵石後，挖掘時有機率產出不同礦物，讓挖石頭也充滿期待與成長感。',
+  },
+  {
+    icon: '🐄',
+    title: '動物生成玩法',
+    desc: '空島發展到一定程度後，可以逐步獲得動物資源，打造農場與牧場，讓島嶼越來越完整。',
+  },
+  {
+    icon: '💰',
+    title: '空島經濟系統',
+    desc: '透過資源收集、交易、販賣物品與活動獲得金幣，成為農夫、礦物商人或天空商業帝國主人。',
+  },
+  {
+    icon: '🏝️',
+    title: '島嶼升級與發展',
+    desc: '未來將加入島嶼等級、挑戰任務、排行榜、成就與更多進階玩法，不只是把島蓋大而已。',
+  },
+  {
+    icon: '👥',
+    title: '組隊合作',
+    desc: '可以和朋友一起經營同一座空島，分工建築、刷資源、跑經濟，一起把小島變成天空城。',
+  },
+]
+
+const infoItems = [
+  { label: '伺服器 IP', value: serverIp },
+  { label: 'Discord', value: 'dc.strawserver.com' },
+  { label: '官網', value: 'www.strawserver.com' },
+  { label: '玩法類型', value: '空島生存 / 經濟 / 島嶼發展 / 建築 / 合作' },
 ]
 </script>
 
@@ -31,10 +63,11 @@ const features = [
   <main class="home">
     <section class="hero">
       <img :src="iconUrl" alt="StrawServer Logo" class="hero__logo" />
-      <h1 class="hero__title">StrawServer</h1>
-      <p class="hero__subtitle">稻草伺服器</p>
+      <p class="hero__eyebrow">稻草空島 StrawSkyBlock</p>
+      <h1 class="hero__title">從一座小島開始你的世界</h1>
+      <p class="hero__subtitle">只有一棵樹、一個箱子、一桶岩漿與一桶水，也能打造出屬於自己的天空王國。</p>
       <p class="hero__desc">
-        以多人休閒、生存、建築、紅石、經濟與活動為核心的 Minecraft 伺服器。
+        歡迎加入稻草空島 StrawSkyBlock！這裡不是普通生存，而是從一座空島開始，靠雙手慢慢擴建、發展經濟、升級島嶼，把一片天空變成屬於你的世界。
       </p>
 
       <div class="ip-card">
@@ -45,12 +78,15 @@ const features = [
             {{ copied ? '已複製' : '複製' }}
           </button>
         </div>
-        <p class="ip-card__hint">分流切換：遊戲內按下 <kbd>Shift</kbd> + <kbd>F</kbd></p>
+        <p class="ip-card__hint">玩法類型：空島生存 / 經濟 / 島嶼發展 / 建築 / 合作</p>
       </div>
 
       <div class="hero__links">
-        <a class="link-btn link-btn--primary" href="https://dc.strawserver.com/" target="_blank" rel="noopener">
+        <a class="link-btn link-btn--primary" :href="discordUrl" target="_blank" rel="noopener">
           加入 Discord
+        </a>
+        <a class="link-btn" :href="websiteUrl" target="_blank" rel="noopener">
+          官方網站
         </a>
         <RouterLink class="link-btn" to="/rules">
           伺服器規定
@@ -69,12 +105,12 @@ const features = [
     </section>
 
     <section class="intro">
-      <h2 class="section-title">關於 StrawServer</h2>
+      <h2 class="section-title">一切，從一座小島開始</h2>
       <p>
-        我們希望打造一個輕鬆但有秩序的遊玩環境，讓玩家不管是想慢慢生存、蓋大型建築、研究紅石機關、和朋友一起冒險，或是參與伺服器活動，都能找到適合自己的玩法。
+        在稻草空島中，每一塊泥土、每一顆樹苗、每一顆礦物都很重要。你可以慢慢擴建，也可以挑戰效率；可以獨自經營，也可以和朋友一起打造天空王國。
       </p>
       <p>
-        伺服器採用多分流系統，包含主要遊玩分流、資源分流與不同玩法區域，玩家可以依照需求自由切換，不用擔心資源被挖光，也能讓生存與建築環境更加穩定。
+        從最基礎的資源出發，透過挖掘、交易、農牧與合作，逐步把小島發展成完整的天空基地。
       </p>
     </section>
 
@@ -89,12 +125,22 @@ const features = [
       </div>
     </section>
 
+    <section class="server-info" aria-label="伺服器資訊">
+      <h2 class="section-title">伺服器資訊</h2>
+      <div class="server-info__grid">
+        <article v-for="item in infoItems" :key="item.label" class="info-card">
+          <span>{{ item.label }}</span>
+          <strong>{{ item.value }}</strong>
+        </article>
+      </div>
+    </section>
+
     <section class="cta">
-      <h2 class="section-title">準備好一起冒險了嗎？</h2>
+      <h2 class="section-title">蓋出屬於自己的天空世界</h2>
       <p>
-        如果你正在找一個可以長期遊玩、和朋友一起發展、又有多種玩法可以體驗的 Minecraft 伺服器，歡迎加入 StrawServer 稻草伺服器。
+        稻草空島 StrawSkyBlock，邀請你從零開始，把每一次挖掘、每一次建造與每一次合作，累積成你的天空王國。
       </p>
-      <p class="cta__motto">今天也一起在稻草伺服器挖到鑽石吧 💎✨</p>
+      <p class="cta__motto">現在就加入 mc.strawserver.com 🌾</p>
     </section>
 
     <footer class="footer">
@@ -109,13 +155,10 @@ const features = [
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 64px 24px 32px;
-  background: radial-gradient(
-      circle at top,
-      rgba(255, 196, 0, 0.14),
-      transparent 60%
-    ),
-    #0e131d;
+  padding: 56px 24px 32px;
+  background: radial-gradient(circle at 20% 0%, rgba(255, 209, 102, 0.22), transparent 34%),
+    radial-gradient(circle at 82% 14%, rgba(93, 176, 255, 0.16), transparent 36%),
+    linear-gradient(180deg, #0d1724 0%, #0e131d 52%, #10151f 100%);
 }
 
 .hero {
@@ -123,52 +166,64 @@ const features = [
   flex-direction: column;
   align-items: center;
   text-align: center;
-  max-width: 760px;
+  max-width: 860px;
   width: 100%;
 }
 
 .hero__logo {
-  width: 140px;
-  height: 140px;
+  width: 132px;
+  height: 132px;
   object-fit: contain;
-  border-radius: 28px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
-  margin-bottom: 32px;
+  border-radius: 30px;
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.5);
+  margin-bottom: 28px;
+}
+
+.hero__eyebrow {
+  color: #ffd166;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
 }
 
 .hero__title {
-  font-size: clamp(40px, 8vw, 64px);
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  background: linear-gradient(135deg, #ffd166, #ffae00);
+  font-size: clamp(40px, 8vw, 72px);
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  line-height: 1.12;
+  background: linear-gradient(135deg, #fff1b8, #ffd166 46%, #7bdcff);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .hero__subtitle {
-  margin-top: 8px;
-  font-size: clamp(18px, 3.2vw, 24px);
-  color: #d6d8df;
+  margin-top: 18px;
+  font-size: clamp(18px, 3.2vw, 25px);
+  color: #e6e8ef;
+  line-height: 1.7;
+  max-width: 760px;
 }
 
 .hero__desc {
-  margin-top: 20px;
-  font-size: clamp(15px, 2.6vw, 18px);
-  color: #aab0bd;
-  line-height: 1.7;
-  max-width: 620px;
+  margin-top: 18px;
+  font-size: clamp(15px, 2.4vw, 18px);
+  color: #aeb8c8;
+  line-height: 1.9;
+  max-width: 740px;
 }
 
 .ip-card {
-  margin-top: 40px;
+  margin-top: 38px;
   width: 100%;
-  max-width: 520px;
+  max-width: 600px;
   padding: 20px 22px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 18px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 22px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.34);
+  backdrop-filter: blur(10px);
 }
 
 .ip-card__row {
@@ -180,24 +235,24 @@ const features = [
 
 .ip-card__label {
   font-size: 13px;
-  color: #9aa0b0;
+  color: #a8b0c0;
   letter-spacing: 0.08em;
 }
 
 .ip-card__value {
   flex: 1;
-  min-width: 200px;
+  min-width: 210px;
   text-align: left;
   font-family: 'JetBrains Mono', 'Fira Code', Menlo, monospace;
   font-size: 17px;
   color: #ffd166;
-  padding: 8px 12px;
+  padding: 9px 13px;
   background: rgba(0, 0, 0, 0.35);
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
 .ip-card__copy {
-  padding: 8px 16px;
+  padding: 9px 17px;
   border-radius: 999px;
   border: 1px solid rgba(255, 209, 102, 0.5);
   background: rgba(255, 174, 0, 0.16);
@@ -218,20 +273,9 @@ const features = [
 .ip-card__hint {
   margin-top: 12px;
   font-size: 13px;
-  color: #8e94a4;
+  color: #98a2b5;
   text-align: left;
-}
-
-.ip-card__hint kbd {
-  display: inline-block;
-  padding: 2px 8px;
-  margin: 0 2px;
-  border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.06);
-  font-family: inherit;
-  font-size: 12px;
-  color: #e6e8ef;
+  line-height: 1.7;
 }
 
 .hero__links {
@@ -248,15 +292,16 @@ const features = [
   padding: 12px 22px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.05);
   color: #f5f5f7;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
   transition: background 0.2s ease, transform 0.1s ease;
 }
 
 .link-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.11);
+  transform: translateY(-1px);
 }
 
 .link-btn--primary {
@@ -271,76 +316,106 @@ const features = [
 
 .hero__status {
   width: 100%;
-  max-width: 520px;
+  max-width: 600px;
   margin-top: 32px;
 }
 
 .intro,
 .features,
+.server-info,
 .cta {
   width: 100%;
-  max-width: 960px;
+  max-width: 1080px;
   margin-top: 72px;
 }
 
 .intro p {
-  color: #b3b8c6;
-  line-height: 1.85;
+  color: #b7bfcd;
+  line-height: 1.9;
   font-size: 16px;
   margin-top: 12px;
-}
-
-.section-title {
-  font-size: clamp(22px, 4vw, 28px);
-  font-weight: 700;
-  color: #f5f5f7;
-  margin-bottom: 20px;
   text-align: center;
 }
 
-.features__grid {
+.section-title {
+  font-size: clamp(24px, 4vw, 34px);
+  font-weight: 850;
+  color: #fff7df;
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+.features__grid,
+.server-info__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 18px;
+}
+
+.feature-card,
+.info-card {
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.2);
 }
 
 .feature-card {
-  padding: 22px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 24px;
   transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .feature-card:hover {
-  transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.07);
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.075);
 }
 
 .feature-card__icon {
-  font-size: 28px;
-  margin-bottom: 10px;
+  font-size: 32px;
+  margin-bottom: 12px;
 }
 
 .feature-card__title {
-  font-size: 17px;
-  font-weight: 700;
+  font-size: 19px;
+  font-weight: 800;
   color: #ffd166;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .feature-card__desc {
   font-size: 14px;
-  line-height: 1.7;
-  color: #aab0bd;
+  line-height: 1.8;
+  color: #adb7c8;
+}
+
+.info-card {
+  padding: 22px;
+}
+
+.info-card span {
+  display: block;
+  color: #9da8ba;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+}
+
+.info-card strong {
+  color: #f5f5f7;
+  font-size: 18px;
+  line-height: 1.6;
 }
 
 .cta {
   text-align: center;
+  padding: 34px 24px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, rgba(255, 209, 102, 0.13), rgba(123, 220, 255, 0.08));
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .cta p {
-  color: #b3b8c6;
+  color: #c0c7d3;
   line-height: 1.8;
   margin-top: 8px;
 }
@@ -349,7 +424,7 @@ const features = [
   margin-top: 16px;
   font-size: 18px;
   color: #ffd166;
-  font-weight: 600;
+  font-weight: 800;
 }
 
 .footer {
@@ -357,7 +432,34 @@ const features = [
   text-align: center;
   margin-top: 64px;
   padding-top: 24px;
-  color: #6c7180;
+  color: #737a8c;
   font-size: 13px;
+}
+
+@media (max-width: 640px) {
+  .home {
+    padding: 42px 16px 28px;
+  }
+
+  .hero__logo {
+    width: 108px;
+    height: 108px;
+  }
+
+  .ip-card__value {
+    min-width: 100%;
+    text-align: center;
+  }
+
+  .ip-card__copy {
+    width: 100%;
+  }
+
+  .intro,
+  .features,
+  .server-info,
+  .cta {
+    margin-top: 52px;
+  }
 }
 </style>
