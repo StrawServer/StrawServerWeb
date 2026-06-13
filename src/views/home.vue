@@ -97,9 +97,6 @@ const infoItems = [
         <a class="link-btn link-btn--primary" :href="discordUrl" target="_blank" rel="noopener">
           加入 Discord
         </a>
-        <a class="link-btn" :href="websiteUrl" target="_blank" rel="noopener">
-          官方網站
-        </a>
         <RouterLink class="link-btn" to="/rules">
           伺服器規定
         </RouterLink>
