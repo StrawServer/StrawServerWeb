@@ -97,7 +97,7 @@ const tableColumns = [
       <RouterLink to="/about">關於我們</RouterLink>
     </nav>
 
-    <section class="page-hero">
+    <section class="page-hero" v-reveal>
       <p class="eyebrow">Sponsor Member Levels</p>
       <h1>稻草伺服器 贊助會員階級</h1>
       <p>
@@ -106,7 +106,12 @@ const tableColumns = [
     </section>
 
     <section class="level-grid" aria-label="贊助會員階級卡片">
-      <article v-for="item in levels" :key="item.level" class="level-card">
+      <article
+        v-for="(item, index) in levels"
+        :key="item.level"
+        class="level-card"
+        v-reveal="{ delay: (index % 3) * 90 }"
+      >
         <div class="level-card__topline">
           <span class="level-card__badge">Lv. {{ item.level }}</span>
           <span class="level-card__price">{{ item.price }}</span>
@@ -145,7 +150,7 @@ const tableColumns = [
       </article>
     </section>
 
-    <section class="table-card" aria-label="贊助會員階級表格">
+    <section class="table-card" aria-label="贊助會員階級表格" v-reveal>
       <table>
         <thead>
           <tr>
@@ -187,6 +192,12 @@ const tableColumns = [
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   font-weight: 700;
+  transition: color 0.25s ease, background 0.25s ease,
+    transform 0.18s ease, border-color 0.25s ease;
+}
+
+.site-nav a:hover {
+  transform: translateY(-2px);
 }
 
 .site-nav a.router-link-active,
@@ -250,6 +261,14 @@ const tableColumns = [
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.035));
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.level-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 209, 102, 0.45);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.34);
 }
 
 .level-card::after {
@@ -261,6 +280,12 @@ const tableColumns = [
   height: 140px;
   border-radius: 50%;
   background: rgba(255, 209, 102, 0.12);
+  transition: transform 0.5s ease, background 0.4s ease;
+}
+
+.level-card:hover::after {
+  transform: scale(1.5);
+  background: rgba(255, 209, 102, 0.2);
 }
 
 .level-card__topline {

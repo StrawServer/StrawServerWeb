@@ -115,7 +115,7 @@ const ruleSections = [
       <RouterLink to="/about">關於我們</RouterLink>
     </nav>
 
-    <section class="page-hero">
+    <section class="page-hero" v-reveal>
       <p class="eyebrow">StrawServer Rules</p>
       <h1>吸管伺服器｜伺服器規定</h1>
       <p>
@@ -125,7 +125,12 @@ const ruleSections = [
     </section>
 
     <section class="rules-list" aria-label="伺服器規定列表">
-      <article v-for="section in ruleSections" :key="section.number" class="rule-card">
+      <article
+        v-for="(section, index) in ruleSections"
+        :key="section.number"
+        class="rule-card"
+        v-reveal="{ delay: (index % 2) * 80 }"
+      >
         <div class="rule-card__header">
           <span class="rule-card__number">{{ section.number }}</span>
           <h2>{{ section.title }}</h2>
@@ -163,6 +168,12 @@ const ruleSections = [
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   font-weight: 700;
+  transition: color 0.25s ease, background 0.25s ease,
+    transform 0.18s ease, border-color 0.25s ease;
+}
+
+.site-nav a:hover {
+  transform: translateY(-2px);
 }
 
 .site-nav a.router-link-active,
@@ -232,6 +243,22 @@ const ruleSections = [
   border-radius: 22px;
   background: rgba(255, 255, 255, 0.045);
   border: 1px solid rgba(255, 255, 255, 0.09);
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.28s ease, box-shadow 0.28s ease;
+}
+
+.rule-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 209, 102, 0.32);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.3);
+}
+
+.rule-card__number {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.rule-card:hover .rule-card__number {
+  transform: rotate(-8deg) scale(1.08);
 }
 
 .rule-card__header {

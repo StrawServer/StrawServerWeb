@@ -36,7 +36,7 @@ const roles = [
       <RouterLink to="/about">關於我們</RouterLink>
     </nav>
 
-    <section class="page-hero">
+    <section class="page-hero" v-reveal>
       <p class="eyebrow">About StrawServer</p>
       <h1>團隊｜稻草伺服器 StrawServer</h1>
       <p>
@@ -44,7 +44,7 @@ const roles = [
       </p>
     </section>
 
-    <section class="story-card">
+    <section class="story-card" v-reveal>
       <h2>我們在做什麼</h2>
       <p>
         我們的團隊負責伺服器規劃、系統設定、活動設計、玩家協調、建築製作與技術維護，目標是打造一個穩定、公平、有趣且適合長期遊玩的 Minecraft 社群。
@@ -54,14 +54,19 @@ const roles = [
     <section class="roles-section" aria-label="團隊職責">
       <h2>團隊職責</h2>
       <div class="roles-grid">
-        <article v-for="role in roles" :key="role.title" class="role-card">
+        <article
+          v-for="(role, index) in roles"
+          :key="role.title"
+          class="role-card"
+          v-reveal="{ delay: (index % 3) * 90 }"
+        >
           <h3>{{ role.title }}</h3>
           <p>{{ role.description }}</p>
         </article>
       </div>
     </section>
 
-    <section class="belief-card">
+    <section class="belief-card" v-reveal>
       <h2>我們的理念</h2>
       <p>
         我們希望稻草伺服器不只是單純的 Minecraft 伺服器，而是一個玩家能夠一起生存、建築、交易、冒險與交流的社群。
@@ -71,7 +76,7 @@ const roles = [
       </p>
     </section>
 
-    <section class="join-card">
+    <section class="join-card" v-reveal>
       <div>
         <p class="eyebrow">Join Our Team</p>
         <h2>想加入團隊？</h2>
@@ -107,6 +112,12 @@ const roles = [
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   font-weight: 700;
+  transition: color 0.25s ease, background 0.25s ease,
+    transform 0.18s ease, border-color 0.25s ease;
+}
+
+.site-nav a:hover {
+  transform: translateY(-2px);
 }
 
 .site-nav a.router-link-active,
@@ -206,6 +217,14 @@ const roles = [
 
 .role-card {
   padding: 24px;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.28s ease, box-shadow 0.28s ease;
+}
+
+.role-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 209, 102, 0.35);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
 }
 
 .role-card h3 {
@@ -236,10 +255,18 @@ const roles = [
   color: #fff;
   background: linear-gradient(135deg, #5865f2, #4752c4);
   font-weight: 800;
+  transition: background 0.25s ease, transform 0.18s ease,
+    box-shadow 0.25s ease;
 }
 
 .discord-link:hover {
   background: linear-gradient(135deg, #6772f4, #5865f2);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(88, 101, 242, 0.42);
+}
+
+.discord-link:active {
+  transform: translateY(-1px) scale(0.98);
 }
 
 @media (max-width: 720px) {
